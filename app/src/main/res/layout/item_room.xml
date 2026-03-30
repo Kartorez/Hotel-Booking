@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="room"
+            type="com.example.hotelbooking.model.Room"/>
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:strokeColor="@android:color/transparent"
+        app:strokeWidth="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="14dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/imageViewRoomIcon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:scaleType="centerInside"
+                android:padding="10dp"
+                android:background="@drawable/bg_room_icon"
+                android:src="@{room.imageRes}"
+                android:contentDescription="@{room.type}"
+                tools:src="@tools:sample/avatars"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="14dp">
+
+                <TextView
+                    android:id="@+id/textViewRoomType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{room.type}"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#1C1B1F"
+                    android:layout_marginBottom="4dp"
+                    tools:text="Стандарт"/>
+
+                <TextView
+                    android:id="@+id/textViewRoomDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="#49454F"
+                    android:layout_marginBottom="6dp"
+                    android:text='@{room.squareMeters + " м² · до " + room.maxGuests + " осіб"}'
+                    tools:text="20 м² · до 2 осіб"/>
+
+                <TextView
+                    android:id="@+id/textViewRoomAvailability"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:text='@{"✓ " + room.availableRooms + " номерів вільно"}'
+                    android:textColor='@{room.availableRooms > 0 ? 0xFF1E8E3E : 0xFFFF0000}'
+                    tools:text="✓ 8 номерів вільно"
+                    tools:textColor="#1E8E3E"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="end"
+                android:layout_marginStart="8dp">
+
+                <TextView
+                    android:id="@+id/textViewRoomPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#1A6EBF"
+                    android:text='@{`₴ ` + room.pricePerNight}'
+                    tools:text="₴2 200"/>
+
+                <TextView
+                    android:id="@+id/textViewRoomPriceLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/price_per_night"
+                    android:textSize="11sp"
+                    android:textColor="#9E9E9E"
+                    android:layout_gravity="end"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

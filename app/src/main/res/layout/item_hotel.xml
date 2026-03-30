@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="hotel"
+            type="com.example.hotelbooking.model.Hotel" />
+
+        <variable
+            name="room"
+            type="com.example.hotelbooking.model.Room" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="12dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageHotel"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:contentDescription="@{hotel.name}"
+                android:scaleType="centerCrop"
+                android:src="@{hotel.imageRes}"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textViewName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@{hotel.name}"
+                        android:textColor="#1C1B1F"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        tools:text="Panorama Grand" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{"₴" + String.valueOf(hotel.pricePerNight)}'
+                            android:textColor="#1A6EBF"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            tools:text="₴3 200" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:text="@string/price_per_night"
+                            android:textColor="#9E9E9E"
+                            android:textSize="11sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/textViewAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:drawableStart="@drawable/baseline_location_on_24"
+                    android:drawableTint="#008AC9"
+                    android:text="@{hotel.address + `, ` + hotel.city}"
+                    android:textColor="#49454F"
+                    tools:text="вул. Хрещатик, 1, Київ" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/textViewRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@{String.valueOf(hotel.rating)}"
+                        android:textColor="#FFAD00"
+                        android:textStyle="bold"
+                        app:drawableStartCompat="@drawable/baseline_star_24"
+                        app:drawableTint="#FFAD00"
+                        tools:text="4.5" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewAvailable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@{"✓ " + room.availableRooms + " номерів вільно"}'
+                        android:textColor='@{room.availableRooms > 0 ? 0xFF1E8E3E : 0xFFFF0000}'
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        tools:text="✓ Є місця"
+                        tools:textColor="#1E8E3E" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Бронювання готелів</string>
+    <string name="search_hint">Пошук</string>
+    <string name="map">Карта</string>
+    <string name="list">Список</string>
+    <string name="on_map">На карті</string>
+    <string name="label_location">Адреса</string>
+    <string name="label_rating">Рейтинг</string>
+    <string name="label_reviews">відгуків</string>
+    <string name="room_types_title">Типи номерів</string>
+    <string name="label_available_rooms">номерів вільно</string>
+    <string name="reviews_title">Відгуки</string>
+    <string name="price_per_night">/ніч</string>
+    <string name="nights_guests">5 ночей · 2 гості</string>
+    <string name="button_book">Забронювати</string>
+    <string name="booking_details">Деталі бронювання</string>
+    <string name="label_check_in">Дата заїзду</string>
+    <string name="label_check_out">Дата виїзду</string>
+    <string name="date_hint">дд.мм.рррр</string>
+    <string name="guest_data">Дані гостя</string>
+    <string name="label_name">Ім\'я та прізвище</string>
+    <string name="name_hint">Ім\'я та прізвище</string>
+    <string name="label_email">Email</string>
+    <string name="email_hint">email@example.com</string>
+    <string name="label_phone">Телефон</string>
+    <string name="phone_hint">+380 67 000 0000</string>
+    <string name="total">Разом</string>
+    <string name="button_confirm">Підтвердити</string>
+</resources>

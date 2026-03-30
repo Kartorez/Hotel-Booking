@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_practical5"
+    app:startDestination="@id/hotelsFragment">
+
+    <fragment
+        android:id="@+id/hotelsFragment"
+        android:name="com.example.hotelbooking.practical5.HotelsFragment"
+        android:label="Готелі"
+        tools:layout="@layout/p3_fragment_hotels">
+        <action
+            android:id="@+id/action_hotelsFragment_to_hotelDetailFragment"
+            app:destination="@id/hotelDetailFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/hotelDetailFragment"
+        android:name="com.example.hotelbooking.practical5.HotelDetailFragment"
+        android:label="Деталі готелю"
+        tools:layout="@layout/p3_fragment_hotel_detail">
+        <argument
+            android:name="hotelId"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <action
+            android:id="@+id/action_hotelDetailFragment_to_bookingFragment"
+            app:destination="@id/bookingFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookingFragment"
+        android:name="com.example.hotelbooking.practical5.BookingFragment"
+        android:label="Бронювання"
+        tools:layout="@layout/p3_fragment_booking"/>
+
+</navigation>

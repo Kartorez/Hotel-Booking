@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hotel Booking</string>
+    <string name="search_hint">Search</string>
+    <string name="map">Map</string>
+    <string name="list">List</string>
+    <string name="on_map">On map</string>
+    <string name="label_location">Location</string>
+    <string name="label_rating">Rating</string>
+    <string name="label_reviews">reviews</string>
+    <string name="room_types_title">Room types</string>
+    <string name="label_available_rooms">rooms available</string>
+    <string name="reviews_title">Reviews</string>
+    <string name="price_per_night">/night</string>
+    <string name="nights_guests">5 nights · 2 guests</string>
+    <string name="button_book">Book</string>
+    <string name="booking_details">Booking details</string>
+    <string name="label_check_in">Check-in date</string>
+    <string name="label_check_out">Check-out date</string>
+    <string name="date_hint">dd.mm.yyyy</string>
+    <string name="guest_data">Guest info</string>
+    <string name="label_name">Full name</string>
+    <string name="name_hint">Full name</string>
+    <string name="label_email">Email</string>
+    <string name="email_hint">email@example.com</string>
+    <string name="label_phone">Phone</string>
+    <string name="phone_hint">+380 67 000 0000</string>
+    <string name="total">Total</string>
+    <string name="button_confirm">Confirm</string>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/hotelsFragment">
+
+    <fragment
+        android:id="@+id/hotelDetailFragment"
+        android:name="com.example.hotelbooking.practical3.HotelDetailFragment"
+        android:label="fragment_hotel_detail"
+        tools:layout="@layout/p3_fragment_hotel_detail" >
+        <action
+            android:id="@+id/action_hotelDetailFragment_to_bookingFragment"
+            app:destination="@id/bookingFragment" />
+        <action
+            android:id="@+id/action_hotelDetailFragment_to_hotelsFragment"
+            app:destination="@id/hotelsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingFragment"
+        android:name="com.example.hotelbooking.practical3.BookingFragment"
+        android:label="fragment_booking"
+        tools:layout="@layout/p3_fragment_booking" >
+        <action
+            android:id="@+id/action_bookingFragment_to_hotelsFragment"
+            app:destination="@id/hotelsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hotelsFragment"
+        android:name="com.example.hotelbooking.practical3.HotelsFragment"
+        android:label="fragment_hotels"
+        tools:layout="@layout/p3_fragment_hotels" >
+        <action
+            android:id="@+id/action_hotelsFragment_to_hotelDetailFragment"
+            app:destination="@id/hotelDetailFragment" />
+    </fragment>
+</navigation>
