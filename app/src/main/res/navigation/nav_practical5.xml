@@ -27,12 +27,19 @@
         <action
             android:id="@+id/action_hotelDetailFragment_to_bookingFragment"
             app:destination="@id/bookingFragment"/>
+        <action
+            android:id="@+id/action_hotelDetailFragment_to_hotelsFragment2"
+            app:destination="@id/hotelsFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/bookingFragment"
         android:name="com.example.hotelbooking.practical5.BookingFragment"
         android:label="Бронювання"
-        tools:layout="@layout/p3_fragment_booking"/>
+        tools:layout="@layout/p3_fragment_booking">
+        <action
+            android:id="@+id/action_bookingFragment_to_hotelsFragment2"
+            app:destination="@id/hotelsFragment" />
+    </fragment>
 
 </navigation>

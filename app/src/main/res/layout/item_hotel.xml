@@ -131,7 +131,7 @@
                         android:id="@+id/textViewAvailable"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text='@{"✓ " + room.availableRooms + " номерів вільно"}'
+                        android:text="@{String.valueOf(hotel.totalAvailableRooms) + ` вільних номерів`}"
                         android:textColor='@{room.availableRooms > 0 ? 0xFF1E8E3E : 0xFFFF0000}'
                         android:textSize="11sp"
                         android:textStyle="bold"

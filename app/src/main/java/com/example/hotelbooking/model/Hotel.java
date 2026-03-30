@@ -99,4 +99,12 @@ public class Hotel extends BaseObservable {
 
     public double getLatitude() { return latitude; }
     public double getLongitude() { return longitude; }
+
+    public int getTotalAvailableRooms() {
+        int total = 0;
+        for (Room room : rooms) {
+            total += room.getAvailableRooms();
+        }
+        return total;
+    }
 }
