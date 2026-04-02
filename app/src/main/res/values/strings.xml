@@ -27,4 +27,9 @@
     <string name="phone_hint">+380 67 000 0000</string>
     <string name="total">Total</string>
     <string name="button_confirm">Confirm</string>
+    <string name="button_login_email">Login with Email</string>
+    <string name="button_login_google">Login with Google</string>
+    <string name="login_title">Hotel Booking</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

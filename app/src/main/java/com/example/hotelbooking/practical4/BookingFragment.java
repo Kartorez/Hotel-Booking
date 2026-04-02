@@ -6,9 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.hotelbooking.databinding.P3FragmentBookingBinding;
 import com.example.hotelbooking.model.Booking;
+import com.example.hotelbooking.model.BookingsViewModel;
 
 public class BookingFragment extends Fragment {
 
@@ -24,7 +26,22 @@ public class BookingFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.setGuest(new Booking());
+
+        BookingsViewModel bookingsViewModel = new ViewModelProvider(requireActivity())
+                .get(BookingsViewModel.class);
+
+        int bookingIndex = -1;
+        Bundle args = getArguments();
+        if (args != null) {
+            bookingIndex = args.getInt("bookingIndex", -1);
+        }
+
+        if (bookingIndex >= 0) {
+            Booking booking = bookingsViewModel.getBookings().get(bookingIndex);
+            binding.setGuest(booking);
+        } else {
+            binding.setGuest(new Booking());
+        }
     }
 
     @Override

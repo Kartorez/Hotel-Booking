@@ -27,4 +27,7 @@
     <string name="phone_hint">+380 67 000 0000</string>
     <string name="total">Разом</string>
     <string name="button_confirm">Підтвердити</string>
+    <string name="button_login_email">Увійти через Email</string>
+    <string name="button_login_google">Увійти через Google</string>
+    <string name="login_title">Бронювання готелів</string>
 </resources>

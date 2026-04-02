@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#F8F9FF"
+        android:paddingVertical="24dp"
+        >
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/baseline_person_24"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/textProfileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Користувач"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/textProfileEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="email@example.com"
+            android:layout_marginTop="24dp"
+            android:textSize="14sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#008AC9"/>
+
+        <Button
+            android:id="@+id/buttonFavorites"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Обране"
+            android:background="@android:color/transparent"
+            android:textColor="#008AC9"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#008AC9"/>
+
+        <Button
+            android:id="@+id/buttonBookings"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Заброньовані"
+            android:background="@android:color/transparent"
+            android:textColor="#008AC9"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#008AC9"/>
+
+        <Button
+            android:id="@+id/buttonAuth"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Авторизація / Вихід"
+            android:background="@android:color/transparent"
+            android:textColor="#008AC9"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#008AC9"/>
+
+    </LinearLayout>
+
+</FrameLayout>

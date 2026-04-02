@@ -35,4 +35,19 @@
             android:id="@+id/action_hotelsFragment_to_hotelDetailFragment"
             app:destination="@id/hotelDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/savedFragment"
+        android:name="com.example.hotelbooking.SavedFragment"
+        android:label="fragment_saved"
+        tools:layout="@layout/p3_fragment_saved" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.hotelbooking.ProfileFragment"
+        android:label="p3_fragment_profile"
+        tools:layout="@layout/p3_fragment_profile" />
+    <fragment
+        android:id="@+id/bookingsFragment"
+        android:name="com.example.hotelbooking.BookingsFragment"
+        android:label="p3_fragment_bookings"
+        tools:layout="@layout/p3_fragment_bookings" />
 </navigation>

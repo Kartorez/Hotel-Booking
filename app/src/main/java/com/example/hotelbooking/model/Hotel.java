@@ -12,17 +12,17 @@ public class Hotel extends BaseObservable {
     private String city;
     @Bindable
     private float rating;
-    private double pricePerNight;
+    private int pricePerNight;
     private int availableRooms;
     private int imageRes;
-
+    private boolean saved = false;
     private double latitude;
 
     private double longitude;
     private List<Room> rooms;
 
     public Hotel(int id, String name, String address, String city,
-                 float rating, double pricePerNight, int availableRooms,
+                 float rating, int pricePerNight, int availableRooms,
                  int imageRes, List<Room> rooms, double latitude, double longitude) {
         this.id = id;
         this.name = name;
@@ -37,8 +37,13 @@ public class Hotel extends BaseObservable {
         this.longitude = longitude;
     }
 
-    public List<Room> getRooms() { return rooms; }
-    public void setRooms(List<Room> rooms) { this.rooms = rooms; }
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+    }
 
 
     public String getName() {
@@ -77,7 +82,7 @@ public class Hotel extends BaseObservable {
         return pricePerNight;
     }
 
-    public void setPricePerNight(double pricePerNight) {
+    public void setPricePerNight(int pricePerNight) {
         this.pricePerNight = pricePerNight;
     }
 
@@ -97,8 +102,13 @@ public class Hotel extends BaseObservable {
         this.imageRes = imageRes;
     }
 
-    public double getLatitude() { return latitude; }
-    public double getLongitude() { return longitude; }
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
 
     public int getTotalAvailableRooms() {
         int total = 0;
@@ -106,5 +116,13 @@ public class Hotel extends BaseObservable {
             total += room.getAvailableRooms();
         }
         return total;
+    }
+
+    public boolean isSaved() {
+        return saved;
+    }
+
+    public void setSaved(boolean saved) {
+        this.saved = saved;
     }
 }

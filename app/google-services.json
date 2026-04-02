@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "138172631127",
+    "project_id": "android-auth-b2f55",
+    "storage_bucket": "android-auth-b2f55.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138172631127:android:53f739b517094bcc91fb12",
+        "android_client_info": {
+          "package_name": "com.example.hotelbooking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "138172631127-et08q9svmu77cranuu2lnut7a19porgp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd4SkktGXqWiJJ0Ay4Wyh5GoIcbQKCMhQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138172631127-et08q9svmu77cranuu2lnut7a19porgp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

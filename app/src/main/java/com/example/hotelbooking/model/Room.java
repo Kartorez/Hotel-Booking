@@ -5,12 +5,10 @@ import androidx.databinding.Bindable;
 public class Room {
     private int id;
     private String type;
-    private double pricePerNight;
+    private int pricePerNight;
     private int squareMeters;
     private int maxGuests;
-
     private int imageRes;
-
     private int availableRooms;
 
     public int getImageRes() {
@@ -21,7 +19,7 @@ public class Room {
         this.imageRes = imageRes;
     }
 
-    public Room(int id, String type, double pricePerNight,
+    public Room(int id, String type, int pricePerNight,
                 int squareMeters, int maxGuests, int availableRooms) {
         this.id = id;
         this.type = type;
@@ -47,11 +45,11 @@ public class Room {
         this.type = type;
     }
 
-    public double getPricePerNight() {
+    public int getPricePerNight() {
         return pricePerNight;
     }
 
-    public void setPricePerNight(double pricePerNight) {
+    public void setPricePerNight(int pricePerNight) {
         this.pricePerNight = pricePerNight;
     }
 

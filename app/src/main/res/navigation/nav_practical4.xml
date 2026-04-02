@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/hotelsFragment"
         android:name="com.example.hotelbooking.practical4.HotelsFragment"
-        android:label="fragment_hotels"
+        android:label="Готелі"
         tools:layout="@layout/p3_fragment_hotels">
         <action
             android:id="@+id/action_hotelsFragment_to_hotelDetailFragment"
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/hotelDetailFragment"
         android:name="com.example.hotelbooking.practical4.HotelDetailFragment"
-        android:label="fragment_hotel_detail"
+        android:label="Деталі"
         tools:layout="@layout/p3_fragment_hotel_detail">
         <action
             android:id="@+id/action_hotelDetailFragment_to_bookingFragment"
@@ -31,7 +31,7 @@
     <fragment
         android:id="@+id/bookingFragment"
         android:name="com.example.hotelbooking.practical4.BookingFragment"
-        android:label="fragment_booking"
+        android:label="Бронювання"
         tools:layout="@layout/p3_fragment_booking">
         <action
             android:id="@+id/action_bookingFragment_to_hotelsFragment"

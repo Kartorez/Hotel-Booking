@@ -6,7 +6,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hotelbooking.R;
 import com.example.hotelbooking.databinding.ItemHotelBinding;
+
 import com.example.hotelbooking.model.Hotel;
 
 import java.util.List;
@@ -17,12 +19,18 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
         void onClick(Hotel hotel);
     }
 
+    public interface OnSaveClick {
+        void onSave(Hotel hotel, int position);
+    }
+
     private final List<Hotel> hotels;
     private final OnHotelClick listener;
+    private final OnSaveClick saveListener;
 
-    public HotelAdapter(List<Hotel> hotels, OnHotelClick listener) {
+    public HotelAdapter(List<Hotel> hotels, OnHotelClick listener, OnSaveClick saveListener) {
         this.hotels = hotels;
         this.listener = listener;
+        this.saveListener = saveListener;
     }
 
     @NonNull
@@ -35,8 +43,9 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
 
     @Override
     public void onBindViewHolder(@NonNull HotelViewHolder holder, int pos) {
-        holder.setHotel(hotels.get(pos));
-        holder.itemView.setOnClickListener(v -> listener.onClick(hotels.get(pos)));
+        Hotel hotel = hotels.get(pos);
+        holder.setHotel(hotel);
+        holder.itemView.setOnClickListener(v -> listener.onClick(hotel));
     }
 
     @Override

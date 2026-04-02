@@ -14,6 +14,8 @@ import com.example.hotelbooking.databinding.P3FragmentHotelDetailBinding;
 import com.example.hotelbooking.model.Hotel;
 import com.example.hotelbooking.model.HotelsViewModel;
 import com.example.hotelbooking.model.Room;
+import com.example.hotelbooking.model.SavedViewModel;
+import com.example.hotelbooking.R;
 
 public class HotelDetailFragment extends Fragment {
 
@@ -31,11 +33,28 @@ public class HotelDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        viewModel = new ViewModelProvider(getActivity()).get(HotelsViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(HotelsViewModel.class);
+        SavedViewModel savedViewModel = new ViewModelProvider(requireActivity())
+                .get(SavedViewModel.class);
 
         Hotel hotel = viewModel.getHotels().get(0);
         binding.setHotel(hotel);
         binding.executePendingBindings();
+
+        binding.floatingButtonLike.setImageResource(
+                hotel.isSaved()
+                        ? R.drawable.baseline_favorite_24
+                        : R.drawable.baseline_favorite_border_24
+        );
+
+        binding.floatingButtonLike.setOnClickListener(v -> {
+            savedViewModel.toggleSaved(hotel);
+            binding.floatingButtonLike.setImageResource(
+                    hotel.isSaved()
+                            ? R.drawable.baseline_favorite_24
+                            : R.drawable.baseline_favorite_border_24
+            );
+        });
 
         Room[] selectedRoom = {hotel.getRooms().get(0)};
 

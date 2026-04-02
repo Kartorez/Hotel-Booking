@@ -10,9 +10,11 @@
         android:name="com.example.hotelbooking.practical5.HotelsFragment"
         android:label="Готелі"
         tools:layout="@layout/p3_fragment_hotels">
+
         <action
-            android:id="@+id/action_hotelsFragment_to_hotelDetailFragment"
-            app:destination="@id/hotelDetailFragment"/>
+            android:id="@+id/action_hotels_to_detail"
+            app:destination="@id/hotelDetailFragment"
+            />
     </fragment>
 
     <fragment
@@ -20,16 +22,16 @@
         android:name="com.example.hotelbooking.practical5.HotelDetailFragment"
         android:label="Деталі готелю"
         tools:layout="@layout/p3_fragment_hotel_detail">
+
         <argument
             android:name="hotelId"
-            app:argType="integer"
-            android:defaultValue="0"/>
+            android:defaultValue="0"
+            app:argType="integer"/>
+
         <action
-            android:id="@+id/action_hotelDetailFragment_to_bookingFragment"
-            app:destination="@id/bookingFragment"/>
-        <action
-            android:id="@+id/action_hotelDetailFragment_to_hotelsFragment2"
-            app:destination="@id/hotelsFragment" />
+            android:id="@+id/action_detail_to_booking"
+            app:destination="@id/bookingFragment"
+            />
     </fragment>
 
     <fragment
@@ -37,9 +39,70 @@
         android:name="com.example.hotelbooking.practical5.BookingFragment"
         android:label="Бронювання"
         tools:layout="@layout/p3_fragment_booking">
+
+        <argument
+            android:name="hotelId"
+            android:defaultValue="0"
+            app:argType="integer"/>
+
+        <argument
+            android:name="roomType"
+            android:defaultValue=""
+            app:argType="string"/>
+
+        <argument
+            android:name="roomPrice"
+            android:defaultValue="0"
+            app:argType="integer"/>
+
+        <argument
+            android:name="bookingIndex"
+            android:defaultValue="-1"
+            app:argType="integer"/>
+
         <action
-            android:id="@+id/action_bookingFragment_to_hotelsFragment2"
-            app:destination="@id/hotelsFragment" />
+            android:id="@+id/action_booking_to_bookings"
+            app:destination="@id/bookingsFragment"
+            app:popUpTo="@id/hotelsFragment"
+            app:popUpToInclusive="false"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookingsFragment"
+        android:name="com.example.hotelbooking.practical4.BookingsFragment"
+        android:label="Мої бронювання">
+
+        <action
+            android:id="@+id/action_bookingsFragment_to_bookingFragment"
+            app:destination="@id/bookingFragment"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/savedFragment"
+        android:name="com.example.hotelbooking.practical5.SavedFragment"
+        android:label="Збережені">
+
+        <action
+            android:id="@+id/action_savedFragment_to_hotelDetailFragment"
+            app:destination="@id/hotelDetailFragment"
+           />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.hotelbooking.practical5.ProfileFragment"
+        android:label="Профіль">
+
+        <action
+            android:id="@+id/action_profile_to_bookings"
+            app:destination="@id/bookingsFragment"
+           />
+
+        <action
+            android:id="@+id/action_profileFragment_to_savedFragment"
+            app:destination="@id/savedFragment"
+          />
     </fragment>
 
 </navigation>

@@ -19,6 +19,13 @@ public class Booking extends BaseObservable {
     @Bindable
     private String roomType;
 
+    private int totalPrice;
+
+    private String status;
+    private int hotelId;
+    private int roomPrice;
+
+
     public Booking() {
     }
 
@@ -75,4 +82,37 @@ public class Booking extends BaseObservable {
         roomType = v;
         notifyPropertyChanged(BR.roomType);
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public int getHotelId() {
+        return hotelId;
+    }
+
+    public void setHotelId(int v) {
+        hotelId = v;
+    }
+
+    public int getRoomPrice() {
+        return roomPrice;
+    }
+
+    public void setRoomPrice(int v) {
+        roomPrice = v;
+    }
+
 }

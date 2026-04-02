@@ -4,4 +4,7 @@
         <item name="android:background">@color/gray_400</item>
         <item name="exampleColor">@color/light_blue_400</item>
     </style>
+    <style name="BottomNavText">
+        <item name="android:textSize">10sp</item>
+    </style>
 </resources>

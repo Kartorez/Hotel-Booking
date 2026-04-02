@@ -16,6 +16,7 @@ import com.example.hotelbooking.databinding.P3FragmentHotelDetailBinding;
 import com.example.hotelbooking.model.Hotel;
 import com.example.hotelbooking.model.HotelsViewModel;
 import com.example.hotelbooking.model.Room;
+import com.example.hotelbooking.model.SavedViewModel;
 import com.example.hotelbooking.practical4.RoomAdapter;
 
 public class HotelDetailFragment extends Fragment {
@@ -34,39 +35,55 @@ public class HotelDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        viewModel = new ViewModelProvider(getActivity()).get(HotelsViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(HotelsViewModel.class);
+        SavedViewModel savedViewModel = new ViewModelProvider(requireActivity())
+                .get(SavedViewModel.class);
 
-        int hotelId = getArguments().getInt("hotelId", 0);
+        final int hotelId = getArguments() != null
+                ? getArguments().getInt("hotelId", 0) : 0;
+
         Hotel hotel = viewModel.getHotels().get(hotelId);
         binding.setHotel(hotel);
         binding.executePendingBindings();
 
-        Room[] selectedRoom = {hotel.getRooms().get(0)};
-        binding.textViewBarPrice.setText("₴" + (int) selectedRoom[0].getPricePerNight() + "/за ніч");
-        binding.textViewGuestCount.setText(selectedRoom[0].getMaxGuests()+" гостей");
+        binding.floatingButtonLike.setImageResource(
+                hotel.isSaved()
+                        ? R.drawable.baseline_favorite_24
+                        : R.drawable.baseline_favorite_border_24
+        );
 
+        binding.floatingButtonLike.setOnClickListener(v -> {
+            savedViewModel.toggleSaved(hotel);
+            binding.floatingButtonLike.setImageResource(
+                    hotel.isSaved()
+                            ? R.drawable.baseline_favorite_24
+                            : R.drawable.baseline_favorite_border_24
+            );
+        });
+
+        Room[] selectedRoom = {hotel.getRooms().get(0)};
+
+        binding.textViewBarPrice.setText("₴" + selectedRoom[0].getPricePerNight() + "/за ніч");
+        binding.textViewGuestCount.setText(selectedRoom[0].getMaxGuests() + " гостей");
 
         binding.recyclerRooms.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.recyclerRooms.setAdapter(new RoomAdapter(hotel.getRooms(), room -> {
             selectedRoom[0] = room;
-            binding.textViewBarPrice.setText("₴" + (int) room.getPricePerNight() + "/за ніч");
-            binding.textViewGuestCount.setText(room.getMaxGuests()+" гостей");
-
+            binding.textViewBarPrice.setText("₴" + room.getPricePerNight() + "/за ніч");
+            binding.textViewGuestCount.setText(room.getMaxGuests() + " гостей");
         }));
 
         binding.buttonBook.setOnClickListener(v -> {
-            Bundle args = new Bundle();
-            args.putInt("hotelId", hotelId);
-            args.putString("roomType", selectedRoom[0].getType());
-            args.putDouble("roomPrice", selectedRoom[0].getPricePerNight());
-            Navigation.findNavController(view)
-                    .navigate(R.id.action_hotelDetailFragment_to_bookingFragment, args);
+            Bundle bundle = new Bundle();
+            bundle.putInt("hotelId", hotelId);
+            bundle.putString("roomType", selectedRoom[0].getType());
+            bundle.putInt("roomPrice", selectedRoom[0].getPricePerNight());
+            Navigation.findNavController(requireView())
+                    .navigate(R.id.action_detail_to_booking, bundle);
         });
 
-
         binding.buttonOpenMap.setOnClickListener(v ->
-                Navigation.findNavController(view)
-                        .navigate(R.id.action_hotelDetailFragment_to_hotelsFragment));
+                Navigation.findNavController(requireView()).popBackStack());
     }
 
     @Override
