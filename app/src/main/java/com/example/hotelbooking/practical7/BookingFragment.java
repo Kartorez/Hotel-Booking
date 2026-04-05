@@ -1,12 +1,12 @@
-package com.example.hotelbooking.practical5;
+package com.example.hotelbooking.practical7;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -15,7 +15,7 @@ import androidx.navigation.Navigation;
 import com.example.hotelbooking.R;
 import com.example.hotelbooking.databinding.P3FragmentBookingBinding;
 import com.example.hotelbooking.model.Booking;
-import com.example.hotelbooking.model.BookingsViewModel;
+import com.example.hotelbooking.model.practical7.BookingsViewModel;
 import com.example.hotelbooking.model.Hotel;
 import com.example.hotelbooking.model.HotelsViewModel;
 import com.google.firebase.auth.FirebaseAuth;
@@ -75,8 +75,9 @@ public class BookingFragment extends Fragment {
 
             binding.buttonConfirm.setText("Зберегти зміни");
             binding.buttonConfirm.setOnClickListener(v -> {
+                Toast.makeText(requireContext(), "Збереження...", Toast.LENGTH_SHORT).show();
                 if (!validateAndSave()) return;
-                bookingsViewModel.getBookings().set(bookingIndex, booking);
+                bookingsViewModel.updateBooking(bookingIndex, booking);
                 Navigation.findNavController(requireView())
                         .navigate(R.id.action_booking_to_bookings);
             });

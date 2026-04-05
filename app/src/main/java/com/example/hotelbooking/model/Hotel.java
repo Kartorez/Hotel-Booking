@@ -21,6 +21,8 @@ public class Hotel extends BaseObservable {
     private double longitude;
     private List<Room> rooms;
 
+    public Hotel() {}
+
     public Hotel(int id, String name, String address, String city,
                  float rating, int pricePerNight, int availableRooms,
                  int imageRes, List<Room> rooms, double latitude, double longitude) {
@@ -35,6 +37,10 @@ public class Hotel extends BaseObservable {
         this.rooms = rooms;
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public List<Room> getRooms() {

@@ -6,6 +6,8 @@ import androidx.databinding.Bindable;
 import com.example.hotelbooking.BR;
 
 public class Booking extends BaseObservable {
+    private String firestoreId;
+    private String id;
     @Bindable
     private String checkInDate;
     @Bindable
@@ -18,15 +20,28 @@ public class Booking extends BaseObservable {
     private String phone;
     @Bindable
     private String roomType;
-
     private int totalPrice;
-
     private String status;
     private int hotelId;
     private int roomPrice;
 
-
     public Booking() {
+    }
+
+    public String getFirestoreId() {
+        return firestoreId;
+    }
+
+    public void setFirestoreId(String firestoreId) {
+        this.firestoreId = firestoreId;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCheckInDate() {
@@ -114,5 +129,4 @@ public class Booking extends BaseObservable {
     public void setRoomPrice(int v) {
         roomPrice = v;
     }
-
 }

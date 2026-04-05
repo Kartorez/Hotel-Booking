@@ -97,7 +97,7 @@
                     android:layout_marginStart="4dp"
                     android:drawableStart="@drawable/baseline_location_on_24"
                     android:drawableTint="#008AC9"
-                    android:text="@{hotel.address + `, ` + hotel.city}"
+                    android:text="@{hotel.address + `,` + hotel.city}"
                     android:textColor="#49454F"
                     tools:text="вул. Хрещатик, 1, Київ" />
 

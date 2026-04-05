@@ -8,7 +8,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotelbooking.MainActivity;
-import com.example.hotelbooking.R;
+import com.example.hotelbooking.databinding.ActivityPractical6Binding;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
 import com.firebase.ui.auth.IdpResponse;
@@ -18,6 +18,8 @@ import java.util.Arrays;
 
 public class Practical6Activity extends AppCompatActivity {
 
+    private ActivityPractical6Binding binding;
+/*
     private ActivityResultLauncher<Intent> signInLauncher =
             registerForActivityResult(
                     new FirebaseAuthUIActivityResultContract(),
@@ -33,10 +35,12 @@ public class Practical6Activity extends AppCompatActivity {
                             }
                         }
                     });
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_practical6);
+        binding = ActivityPractical6Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
@@ -44,12 +48,8 @@ public class Practical6Activity extends AppCompatActivity {
             return;
         }
 
-        findViewById(R.id.buttonLoginWithEmail).setOnClickListener(v ->
+        binding.buttonLogin.setOnClickListener(v ->
                 startSignIn(new AuthUI.IdpConfig.EmailBuilder().build())
-        );
-
-        findViewById(R.id.buttonLoginGoogle).setOnClickListener(v ->
-                startSignIn(new AuthUI.IdpConfig.GoogleBuilder().build())
         );
     }
 
@@ -59,9 +59,27 @@ public class Practical6Activity extends AppCompatActivity {
                 .setAvailableProviders(Arrays.asList(provider))
                 .build();
         signInLauncher.launch(signInIntent);
+    }*/
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = ActivityPractical6Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() != null) {
+            gotoMain();
+            return;
+        }
+
+        binding.buttonLogin.setOnClickListener(v ->
+                startActivity(new Intent(this, LoginActivity.class))
+        );
     }
 
-    private void gotoMainScreen() {
+    public void gotoMain() {
         startActivity(new Intent(this, MainActivity.class));
         finish();
     }

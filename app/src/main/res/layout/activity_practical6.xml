@@ -24,7 +24,7 @@
         android:layout_marginBottom="48dp"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonLoginWithEmail"
+        android:id="@+id/buttonLogin"
         android:layout_width="280dp"
         android:layout_height="52dp"
         android:text="@string/button_login_email"
@@ -32,18 +32,6 @@
         android:textSize="15sp"
         android:layout_marginBottom="16dp"
         app:backgroundTint="#008AC9"
-        app:cornerRadius="26dp"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonLoginGoogle"
-        android:layout_width="280dp"
-        android:layout_height="52dp"
-        android:text="@string/button_login_google"
-        android:textColor="#1C1B1F"
-        android:textSize="15sp"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        app:strokeColor="#008AC9"
-        app:strokeWidth="1.5dp"
         app:cornerRadius="26dp"/>
 
 </LinearLayout>

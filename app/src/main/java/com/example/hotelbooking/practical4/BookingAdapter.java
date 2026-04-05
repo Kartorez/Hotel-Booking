@@ -19,8 +19,8 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
         void onDetails(Booking booking, Hotel hotel);
     }
 
-    private final List<Booking> bookings;
-    private final List<Hotel> hotels;
+    private List<Booking> bookings;
+    private List<Hotel> hotels;
     private final OnBookingClick listener;
 
     public BookingAdapter(List<Booking> bookings, List<Hotel> hotels, OnBookingClick listener) {
@@ -63,8 +63,20 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
         }
     }
 
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
+        notifyDataSetChanged();
+    }
+
+    public void setHotels(List<Hotel> hotels) {
+        this.hotels = hotels;
+        notifyDataSetChanged();
+    }
+
     @Override
-    public int getItemCount() { return bookings.size(); }
+    public int getItemCount() {
+        return bookings != null ? bookings.size() : 0;
+    }
 
     static class BookingViewHolder extends RecyclerView.ViewHolder {
         final ItemBookingBinding binding;

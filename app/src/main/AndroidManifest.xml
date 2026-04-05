@@ -14,6 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HotelBooking">
         <activity
+            android:name=".practical7.Practical7Activity"
+            android:exported="false" />
+        <activity
+            android:name=".practical6.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".practical6.LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".practical6.Practical6Activity"
             android:exported="false"
             android:label="Авторизація"

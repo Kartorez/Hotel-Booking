@@ -13,6 +13,7 @@ import com.example.hotelbooking.practical3.Practical3Activity;
 import com.example.hotelbooking.practical4.Practical4Activity;
 import com.example.hotelbooking.practical5.Practical5Activity;
 import com.example.hotelbooking.practical6.Practical6Activity;
+import com.example.hotelbooking.practical7.Practical7Activity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -37,5 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, Practical5Activity.class)));
         binding.buttonPractical6.setOnClickListener(v ->
                 startActivity(new Intent(this, Practical6Activity.class)));
+        binding.buttonPractical7.setOnClickListener(v ->
+                startActivity(new Intent(this, Practical7Activity.class)));
     }
 }

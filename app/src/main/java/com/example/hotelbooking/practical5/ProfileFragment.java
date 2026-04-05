@@ -12,6 +12,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.hotelbooking.R;
 import com.example.hotelbooking.databinding.P3FragmentProfileBinding;
+import com.example.hotelbooking.practical6.LoginActivity;
 import com.example.hotelbooking.practical6.Practical6Activity;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,16 +32,6 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        if (user != null) {
-            binding.textProfileName.setText(user.getDisplayName() != null ? user.getDisplayName() : "Користувач");
-            binding.textProfileEmail.setText(user.getEmail());
-        } else {
-            binding.textProfileName.setText("Не залогінено");
-            binding.textProfileEmail.setText("");
-        }
-
         binding.buttonFavorites.setOnClickListener(v -> {
             NavController navController = NavHostFragment.findNavController(this);
             navController.navigate(R.id.action_profileFragment_to_savedFragment);
@@ -50,12 +41,36 @@ public class ProfileFragment extends Fragment {
             NavController navController = NavHostFragment.findNavController(this);
             navController.navigate(R.id.action_profile_to_bookings);
         });
-
-        binding.buttonAuth.setOnClickListener(v -> {
-            AuthUI.getInstance().signOut(requireActivity()).addOnCompleteListener(task -> {
-                startActivity(new Intent(requireActivity(), Practical6Activity.class));
-                requireActivity().finish();
-            });
-        });
     }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user != null) {
+            binding.textProfileName.setText(user.getDisplayName() != null ? user.getDisplayName() : "Користувач");
+            binding.textProfileEmail.setText(user.getEmail());
+            binding.buttonAuth.setText("Вийти");
+
+            binding.buttonAuth.setOnClickListener(v -> {
+                AuthUI.getInstance().signOut(requireActivity()).addOnCompleteListener(task -> {
+                    startActivity(new Intent(requireActivity(), Practical5Activity.class));
+                    requireActivity().finish();
+                });
+            });
+        } else {
+            binding.textProfileName.setText("Не залогінено");
+            binding.textProfileEmail.setText("");
+            binding.buttonAuth.setText("Увійти");
+
+            binding.buttonAuth.setOnClickListener(v ->
+                    startActivity(new Intent(requireActivity(), LoginActivity.class))
+            );
+        }
+    }
+
+
 }

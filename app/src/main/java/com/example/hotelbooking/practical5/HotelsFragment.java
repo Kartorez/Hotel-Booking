@@ -125,6 +125,18 @@ public class HotelsFragment extends Fragment {
                 ColorStateList.valueOf(Color.parseColor("#008AC9")));
         binding.buttonShowList.setTextColor(Color.parseColor("#008AC9"));
 
+        boolean showMap = getArguments() != null && getArguments().getBoolean("showMap", false);
+        String searchAddress = getArguments() != null ? getArguments().getString("searchAddress", "") : "";
+
+        if (showMap) {
+            binding.toggleGroup.check(R.id.buttonShowMap);
+        }
+
+        if (!searchAddress.isEmpty()) {
+            binding.search.setText(searchAddress);
+            filter(searchAddress);
+        }
+
         updateMarkers(filteredHotels);
     }
 
@@ -153,7 +165,9 @@ public class HotelsFragment extends Fragment {
             for (Hotel hotel : viewModel.getHotels()) {
                 if (hotel.getName().toLowerCase().contains(lower)
                         || hotel.getCity().toLowerCase().contains(lower)
-                        || hotel.getAddress().toLowerCase().contains(lower)) {
+                        || hotel.getAddress().toLowerCase().contains(lower)
+                        || (hotel.getAddress() + ", " + hotel.getCity()).toLowerCase().contains(lower))
+                    {
                     filteredHotels.add(hotel);
                 }
             }

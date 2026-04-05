@@ -1,9 +1,8 @@
-package com.example.hotelbooking.practical5;
+package com.example.hotelbooking.practical7;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -12,18 +11,18 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.hotelbooking.R;
-import com.example.hotelbooking.databinding.ActivityPractical5Binding;
+import com.example.hotelbooking.databinding.ActivityPractical7Binding;
 
-public class Practical5Activity extends AppCompatActivity {
+public class Practical7Activity extends AppCompatActivity {
 
-    private ActivityPractical5Binding binding;
+    private ActivityPractical7Binding binding;
     private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityPractical5Binding.inflate(getLayoutInflater());
+        binding = ActivityPractical7Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, insets) -> {

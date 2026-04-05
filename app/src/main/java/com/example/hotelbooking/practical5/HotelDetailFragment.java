@@ -1,5 +1,6 @@
 package com.example.hotelbooking.practical5;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.example.hotelbooking.model.HotelsViewModel;
 import com.example.hotelbooking.model.Room;
 import com.example.hotelbooking.model.SavedViewModel;
 import com.example.hotelbooking.practical4.RoomAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HotelDetailFragment extends Fragment {
 
@@ -74,6 +76,18 @@ public class HotelDetailFragment extends Fragment {
         }));
 
         binding.buttonBook.setOnClickListener(v -> {
+            if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+                new androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                        .setTitle("Потрібна авторизація")
+                        .setMessage("Увійдіть в акаунт щоб забронювати готель")
+                        .setPositiveButton("Увійти", (dialog, which) ->
+                                startActivity(new Intent(requireActivity(),
+                                        com.example.hotelbooking.practical6.LoginActivity.class))
+                        )
+                        .setNegativeButton("Скасувати", null)
+                        .show();
+                return;
+            }
             Bundle bundle = new Bundle();
             bundle.putInt("hotelId", hotelId);
             bundle.putString("roomType", selectedRoom[0].getType());
@@ -82,8 +96,13 @@ public class HotelDetailFragment extends Fragment {
                     .navigate(R.id.action_detail_to_booking, bundle);
         });
 
-        binding.buttonOpenMap.setOnClickListener(v ->
-                Navigation.findNavController(requireView()).popBackStack());
+        binding.buttonOpenMap.setOnClickListener(v -> {
+            Bundle args = new Bundle();
+            args.putBoolean("showMap", true);
+            args.putString("searchAddress", hotel.getAddress() + ", " + hotel.getCity());
+            Navigation.findNavController(requireView())
+                    .navigate(R.id.action_hotelDetailFragment_to_hotelsFragment, args);
+        });
     }
 
     @Override
