@@ -2,6 +2,9 @@ package com.example.hotelbooking.practical6;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Patterns;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +25,30 @@ public class LoginActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
+        binding.editEmail.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                String error = !Patterns.EMAIL_ADDRESS.matcher(s.toString().trim()).matches()
+                        ? "Невірний email" : null;
+                binding.emailLayout.setError(error);
+                binding.emailLayout.setErrorEnabled(error != null);
+            }
+        });
+
+        binding.editPassword.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                String error = s.toString().trim().length() < 6
+                        ? "Мінімум 6 символів" : null;
+                binding.passwordLayout.setError(error);
+                binding.passwordLayout.setErrorEnabled(error != null);
+            }
+        });
+
         binding.buttonLogin.setOnClickListener(v -> login());
 
         binding.buttonGoRegister.setOnClickListener(v ->
@@ -35,6 +62,11 @@ public class LoginActivity extends AppCompatActivity {
 
         if (email.isEmpty() || pass.isEmpty()) {
             Toast.makeText(this, "Заповніть усі поля", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (binding.emailLayout.getError() != null || binding.passwordLayout.getError() != null) {
+            Toast.makeText(this, "Виправте помилки", Toast.LENGTH_SHORT).show();
             return;
         }
 
